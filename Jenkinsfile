@@ -28,8 +28,10 @@ pipeline {
                     withCredentials([
                         string(credentialsId: 'MONGO_URI', variable: 'MONGO_URI')
                     ]){
+                        def cleanedMongoUri = MONGO_URI.trim() // Eliminar espacios en blanco al final
+
                         sh """
-                            sed 's|\\${MONGO_URI}|${MONGO_URI}|g' docker-compose.yml > docker-compose-update.yml
+                            sed 's|\\${cleanedMongoUri}|${cleanedMongoUri}|g' docker-compose.yml > docker-compose-update.yml
                             docker-compose -f docker-compose-update.yml up -d
                         """
                     }
