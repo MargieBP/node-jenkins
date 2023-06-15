@@ -40,12 +40,12 @@ pipeline {
 
     post {
         always {
-            emailext {
+            emailext (
                 body: "Estado del build: ${currentBuild.currentResult}"
                 subject: "Despliegue de Proyecto. Ver detalles: ${env.BUILD_URL} ",
                 to: "carlos.gomez@est.iudigital.edu.co",
                 from: "margie.potes@est.iudigital.edu.co"
-            }
+            )
         }        
     }
 }
