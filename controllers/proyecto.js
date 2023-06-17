@@ -1,4 +1,5 @@
 const Proyecto = require('../models/proyectos')
+
 const { request, response} = require('express')
 const Cliente = require('../models/clientes')
 const Etapa = require('../models/etapas')
